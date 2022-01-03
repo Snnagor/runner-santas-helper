@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b2d4e89bd8a3643983ea8b83dc4ba1, type: 3}
+  m_Name: Config
+  m_EditorClassIdentifier: 
+  scoreMeter: 10
+  scoreBonus: 50
+  startSpeedPlayer: 100
+  speedSidestepPlayer: 40
+  accelerationDistance: 100
+  acceleration: 5
+  speedAnimation: 0.02
+  deltaSwipeMin: 50
+  countTrack: 3
+  widthTrack: 10
+  minCountTrack: 2
+  maxCountTrack: 10
+  minWidthTrack: 5
+  maxWidthTrack: 20
+  startPositionRoad: 0
+  stepPositionRoad: 990
+  deltaDistanceItems: 50
+  countLineOnScreen: 13
+  speedCamera: 3
+  restart: 0

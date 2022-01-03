@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bonus
+  - Block
+  - Road
+  - Empty
+  - ship
+  - asteroid
+  - Gift
+  - FxTemporaire
+  - TopBlock
+  - Snowman
+  - Sled
+  - Flag
+  - Coin
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Block
+  - Water
+  - UI
+  - Post-Processing
+  - SnowBoom
+  - Sled
+  - Destroyer
+  - NoDestroy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
