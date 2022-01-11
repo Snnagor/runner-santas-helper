@@ -33,7 +33,6 @@ public class Road : MoveObjects
     //Флаг активации следующей дороги
     public bool Begin { get; set; } = false;
 
-
     #region Signals
 
     private void OnEnable()
@@ -52,8 +51,8 @@ public class Road : MoveObjects
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            Begin = true;
+        {            
+           Begin = true;
         }
     }
 

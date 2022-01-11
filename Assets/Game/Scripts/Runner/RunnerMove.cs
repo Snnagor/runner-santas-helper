@@ -200,24 +200,24 @@ public class RunnerMove : MonoBehaviour
             signalBus.Fire(new LoseSignal());            
         }
 
-        if (other.gameObject.CompareTag("Snowman"))
-        {
-            soundManager.HitSnowman();
+        //if (other.gameObject.CompareTag("Snowman"))
+        //{
+        //    soundManager.HitSnowman();
 
-            if (runnerGifts.CountActiveGift > 0)
-                soundManager.HitBlockGifts();
+        //    if (runnerGifts.CountActiveGift > 0)
+        //        soundManager.HitBlockGifts();
 
-            //runnerGifts.Lose();
-            runnerGifts.Continue();
+        //    //runnerGifts.Lose();
+        //    runnerGifts.Continue();
 
-            if (!snowBoom.gameObject.activeSelf)
-            {
-                snowBoom.gameObject.SetActive(true);
-            }
-            snowBoom.Play();
-            runnerAnim.AnimLose();
-            signalBus.Fire(new LoseSignal());
-        }
+        //    if (!snowBoom.gameObject.activeSelf)
+        //    {
+        //        snowBoom.gameObject.SetActive(true);
+        //    }
+        //    snowBoom.Play();
+        //    runnerAnim.AnimLose();
+        //    signalBus.Fire(new LoseSignal());
+        //}
     }
 
     private void Update()

@@ -164,4 +164,10 @@ public class GameManager: MonoBehaviour
             WidthTrack = config.MaxWidthTrack;
     }
 
+    public void DisableTutorial()
+    {
+        if(HaveTutorial)
+           HaveTutorial = false;
+    }
+
 }

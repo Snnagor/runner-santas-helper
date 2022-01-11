@@ -73,8 +73,8 @@ public class ActivatorRoad : MonoBehaviour
         else
             snowEanble = true;
 
-        if (gameManager.HaveTutorial)
-            gameManager.HaveTutorial = false;
+        //if (gameManager.HaveTutorial)
+        //    gameManager.HaveTutorial = false;
     }    
 
     /// <summary>
@@ -89,8 +89,12 @@ public class ActivatorRoad : MonoBehaviour
 
     void Update()
     {
+        
+
         if (newRoad.Begin)
         {            
+
+
             if (currentRoad != null)
             {
                 DeactivateRoad(currentRoad);
@@ -114,8 +118,11 @@ public class ActivatorRoad : MonoBehaviour
 
             ActivateRoad(positionNewRoadZ);
 
-            currentRoad.Begin = false;
+            currentRoad.Begin = false;           
         }
+
+
+        
     }
 
     private void CounterLocation()
@@ -123,13 +130,16 @@ public class ActivatorRoad : MonoBehaviour
         if(locationSettings.Locations[CurrentLocation].IdRoadScene.Length == currentIdRoadScene)
         {
             currentIdRoadScene = 0;
-            CurrentLocation++;            
+            CurrentLocation++;
+            
         }
 
         if(CurrentLocation == locationSettings.Locations.Count)
         {
             CurrentLocation = 1;
         }
+
+        //print(CurrentLocation + " CurrentLocation");
 
         activatorItems.FillChanceBlock();
     }
