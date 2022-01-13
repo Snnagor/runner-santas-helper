@@ -770,7 +770,7 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Analytics: 1
+    Analytics: 0
     Build: 0
     Collab: 0
     Game Performance: 0
@@ -791,11 +791,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 321c464a-d0be-4e91-b822-a23a5dd055a7
+  cloudProjectId: b67b5f32-fdb7-4286-8fd6-58302d9f2abc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: 'Runner Santas Helper '
-  organizationId: snnagorny
+  organizationId: nineteamstudio
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
