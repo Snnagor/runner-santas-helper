@@ -32,18 +32,21 @@ public class GameManager: MonoBehaviour
 
     private RunnerAnimation runnerAnimation;
     private RunnerMove runnerMove;
+    private DataManager dataManager;
 
     [Inject]
     private void Construct(Config _config, 
                            SignalBus _signalBus, 
                            RunnerAnimation _runnerAnimation,
-                           RunnerMove _runnerMove)
+                           RunnerMove _runnerMove,
+                           DataManager _dataManager)
     {        
         signalBus = _signalBus;      
        // settingsFile = _settingsFile; 
         config = _config;
         runnerAnimation = _runnerAnimation;
         runnerMove = _runnerMove;
+        dataManager = _dataManager;
     }
 
     #endregion
@@ -136,6 +139,15 @@ public class GameManager: MonoBehaviour
 
     private void Start()
     {
+        if(dataManager.LoadDataTutorial() || dataManager.LoadDataTutorial2())
+        {
+            HaveTutorial = true;
+        }
+        else
+        {
+            HaveTutorial = false;
+        }
+
      #if UNITY_STANDALONE_WIN
 
        Application.targetFrameRate = 100;

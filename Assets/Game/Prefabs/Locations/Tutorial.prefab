@@ -351,6 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 4780043367015998190}
   topBlockTutorial: 0
+  matchTutorial: 0
 --- !u!54 &2136507484
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -880,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 5038783276777995001}
   topBlockTutorial: 0
+  matchTutorial: 1
 --- !u!54 &1494614434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1923,6 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 4864745558786265087}
   topBlockTutorial: 1
+  matchTutorial: 0
 --- !u!54 &1516956675
 Rigidbody:
   m_ObjectHideFlags: 0

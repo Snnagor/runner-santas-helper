@@ -42,23 +42,29 @@ public class InputHandler
     /// <returns></returns>
     private Vector2 GetSwipe()
     {
+        
+
         if (Input.touchCount > 0)
-        {
+        {           
             Touch touch = Input.GetTouch(0);
 
             //стартовая позиция
             if (touch.phase == TouchPhase.Began)
             {
-                beginTouch = touch.position;
+                beginTouch = touch.position; 
             }
 
+
             //конечная позиция
-            if (touch.phase == TouchPhase.Ended)
+            if (touch.phase == TouchPhase.Ended && beginTouch != Vector2.zero)
             {
                 endTouch = touch.position;
+               // Debug.Log(endTouch + " endTouch");
 
                 float deltaPosX = endTouch.x - beginTouch.x;
                 float deltaPosY = endTouch.y - beginTouch.y;
+
+              //  Debug.Log(deltaPosX + " deltaPosX");
 
                 if (deltaPosX > 0 && Mathf.Abs(deltaPosX) > deltaSwipeMin && Mathf.Abs(deltaPosY) < Mathf.Abs(deltaPosX))
                 {
@@ -81,6 +87,8 @@ public class InputHandler
                 }
 
             }
+
+            return Vector2.zero;
         }
 
         return Vector2.zero;
@@ -131,16 +139,19 @@ public class InputHandler
     /// <returns></returns>
     public float InputX()
     {        
-        if (IsThereTouchOnScreen())
+        if(Time.timeScale > 0 && gameManager.IsRun)
         {
-            return Scope(GetSwipe().x);
-        }
+            if (IsThereTouchOnScreen())
+            {
+                return Scope(GetSwipe().x);
+            }
 
-        if (IsKeyDown())
-        {
-            return Scope(GetArrow().x);
-        }
-
+            if (IsKeyDown())
+            {
+                return Scope(GetArrow().x);
+            }
+        }          
+        
         return 0f;
     }
 
@@ -182,17 +193,20 @@ public class InputHandler
     /// </summary>
     /// <returns></returns>
     public float InputY()
-    {
-        if (IsThereTouchOnScreen())
+    { 
+        if(Time.timeScale > 0 && gameManager.IsRun)
         {
-            return GetSwipe().y;
-        }
+            if (IsThereTouchOnScreen())
+            {
+                return GetSwipe().y;
+            }
 
-        if (IsKeyDown())
-        {
-            return GetArrow().y;
+            if (IsKeyDown())
+            {
+                return GetArrow().y;
+            }
         }
-
+       
         return 0f;
     }
 
@@ -213,7 +227,7 @@ public class InputHandler
     /// </summary>
     /// <returns></returns>
     private bool IsThereTouchOnScreen()
-    {
+    {       
         if (Input.touchCount > 0 && GetSwipe() != Vector2.zero) return true;
         else return false;
     }

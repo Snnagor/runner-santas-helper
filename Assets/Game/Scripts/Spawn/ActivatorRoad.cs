@@ -22,6 +22,7 @@ public class ActivatorRoad : MonoBehaviour
     private LocationsSettings locationSettings;
     private ActivatorItems activatorItems;
     private FXSnowFalling fXSnowFalling;
+    private DataManager dataManager;
 
     [Inject]
     private void Construct(Config _config,
@@ -29,7 +30,8 @@ public class ActivatorRoad : MonoBehaviour
                            Spawner _spawner,
                            LocationsSettings _locationSettings,
                            ActivatorItems _activatorItems,
-                           FXSnowFalling _fXSnowFalling)
+                           FXSnowFalling _fXSnowFalling,
+                           DataManager _dataManager)
     {        
         gameManager = _gameManager;
         spawner = _spawner;        
@@ -37,6 +39,7 @@ public class ActivatorRoad : MonoBehaviour
         locationSettings = _locationSettings;
         activatorItems = _activatorItems;
         fXSnowFalling = _fXSnowFalling;
+        dataManager = _dataManager;
     }
 
     #endregion
@@ -45,9 +48,9 @@ public class ActivatorRoad : MonoBehaviour
     {
        countRoadActive = new int[spawner.RoadOnScene.Count];
 
-        if (!gameManager.HaveTutorial)
+        if (!gameManager.HaveTutorial || !dataManager.LoadDataTutorial())
         {
-            CurrentLocation = 1;
+            CurrentLocation = 1;            
         }
 
        ActivateRoad(config.StartPositionRoad);
@@ -120,9 +123,6 @@ public class ActivatorRoad : MonoBehaviour
 
             currentRoad.Begin = false;           
         }
-
-
-        
     }
 
     private void CounterLocation()

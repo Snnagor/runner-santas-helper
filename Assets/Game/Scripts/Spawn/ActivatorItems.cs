@@ -23,6 +23,7 @@ public class ActivatorItems : MonoBehaviour
     private LocationsSettings locationSettings;
     private ActivatorRoad activationRoad;
     private DiContainer diContainer;
+    private DataManager dataManager;
 
     [Inject]
     private void Construct(Config _config,
@@ -31,7 +32,8 @@ public class ActivatorItems : MonoBehaviour
                            SignalBus _signalBus,
                            LocationsSettings _locationSettings,
                            ActivatorRoad _activationRoad,
-                           DiContainer _diContainer)
+                           DiContainer _diContainer,
+                           DataManager _dataManager)
     {
         gameManager = _gameManager;
         spawner = _spawner;
@@ -41,6 +43,7 @@ public class ActivatorItems : MonoBehaviour
         locationSettings = _locationSettings;
         activationRoad = _activationRoad;
         diContainer = _diContainer;
+        dataManager = _dataManager;
     }
 
     #endregion
@@ -79,7 +82,7 @@ public class ActivatorItems : MonoBehaviour
     {
         countBlock = new int[spawner.BlockOnScene.Count];
 
-        if (!gameManager.HaveTutorial)
+        if (!gameManager.HaveTutorial || !dataManager.LoadDataTutorial())
         {
             StartAddLine();
         }
