@@ -147,8 +147,15 @@ public class GameManager: MonoBehaviour
         {
             HaveTutorial = false;
         }
-    
+
+#if UNITY_EDITOR
+
+        Application.targetFrameRate = 200;
+#else
+       
        Application.targetFrameRate = 60;
+     
+#endif
 
         InitSettingsFromFile();
     }

@@ -138,4 +138,12 @@ public class RunnerBonuses : MonoBehaviour
         return shopSettings.UpgradesBonuses[idBonus].PriceUpgrade[indexTimeBonus].TimeBonus;
     }
 
+    private void Update()
+    {
+        foreach (var item in ibonuses)
+        {
+            item.Execute();
+        }
+    }
+
 }

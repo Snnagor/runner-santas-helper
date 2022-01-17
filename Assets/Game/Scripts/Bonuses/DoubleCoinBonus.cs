@@ -56,7 +56,7 @@ public class DoubleCoinBonus : MonoBehaviour, IBonus
 
     }
 
-    private void Update()
+    public void Execute()
     {
         CounterTimeBonus();
     }

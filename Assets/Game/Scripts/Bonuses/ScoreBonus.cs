@@ -60,4 +60,8 @@ public class ScoreBonus : MonoBehaviour, IBonus
 
     }
 
+    public void Execute()
+    {
+        
+    }
 }
