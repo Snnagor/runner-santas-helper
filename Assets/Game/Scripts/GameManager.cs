@@ -147,12 +147,8 @@ public class GameManager: MonoBehaviour
         {
             HaveTutorial = false;
         }
-
-     #if UNITY_STANDALONE_WIN
-
-       Application.targetFrameRate = 100;
-
-     #endif
+    
+       Application.targetFrameRate = 60;
 
         InitSettingsFromFile();
     }
