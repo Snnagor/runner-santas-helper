@@ -29,17 +29,20 @@ public class RunnerGifts : MonoBehaviour
     private SignalBus signalBus;
     private DiContainer diContainer;
     private SoundManager soundManager;
+    private ActivatorRoad activationRoad;
 
     [Inject]
     private void Construct(GameManager _gameManager, 
                            SignalBus _signalBus, 
                            DiContainer _diContainer, 
-                           SoundManager _soundManager)
+                           SoundManager _soundManager,
+                           ActivatorRoad _activationRoad)
     {       
         gameManager = _gameManager;
         signalBus = _signalBus;
         diContainer = _diContainer;
         soundManager = _soundManager;
+        activationRoad = _activationRoad;
     }
 
     #endregion
@@ -246,6 +249,9 @@ public class RunnerGifts : MonoBehaviour
             var newFallGift = diContainer.InstantiatePrefabForComponent<FallGiftLose>(fallGiftLosePrefab, gifts[i].transform.position, Quaternion.identity, null);
             newFallGift.ChangeMat(gifts[i].BoxMesh.material, gifts[i].TapeMesh.material);
 
+            // добавление в список движущихся предметов
+            if (newFallGift is IMove move) activationRoad.MoveObjects.Add(newFallGift);
+
             gifts[i].HitBlock = false;
             gifts[i].gameObject.SetActive(false);
             gifts[i].transform.rotation = Quaternion.Euler(Vector3.zero);
@@ -292,6 +298,9 @@ public class RunnerGifts : MonoBehaviour
     {
         var newFallGift = diContainer.InstantiatePrefabForComponent<FallGift>(fallGiftPrefab, gifts[indexGift].transform.position, Quaternion.identity, null);
         newFallGift.ChangeMat(gifts[indexGift].BoxMesh.material, gifts[indexGift].TapeMesh.material);
+
+        // добавление в список движущихся предметов
+        if (newFallGift is IMove move) activationRoad.MoveObjects.Add(newFallGift);
 
         gifts[indexGift].HitBlock = false;
         gifts[indexGift].gameObject.SetActive(false);

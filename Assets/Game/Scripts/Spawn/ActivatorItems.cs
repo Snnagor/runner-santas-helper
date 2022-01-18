@@ -277,8 +277,7 @@ public class ActivatorItems : MonoBehaviour
     public GameObject[] CreateLine(float positionZ)
     {
         GameObject[] line = new GameObject[gameManager.CountTrack + 1];
-
-        //if(!gameManager.HaveTutorial)
+                
         line = FillLine(line);
 
         int rightPos = (int)Mathf.Floor(gameManager.CountTrack / 2);
@@ -318,7 +317,7 @@ public class ActivatorItems : MonoBehaviour
 
         if (index == 3)
         {
-            return AddBlock(numberTrack).gameObject;
+            return AddBlock().gameObject;
         }
 
         if (index == 4)
@@ -337,6 +336,9 @@ public class ActivatorItems : MonoBehaviour
     {
         Coin newCoin = spawner.CoinOnScene[countCoin];
         countCoin++;
+
+        // добавление в список движущихся предметов
+        if (newCoin is IMove move) activationRoad.MoveObjects.Add(newCoin);
 
         if (countCoin == spawner.CoinOnScene.Count)
         {
@@ -366,6 +368,11 @@ public class ActivatorItems : MonoBehaviour
 
             countGift++;
 
+
+            // добавление в список движущихся предметов
+            if (newGift is IMove move) activationRoad.MoveObjects.Add(newGift);
+
+
             if (countGift == spawner.GiftOnScene.Count)
             {
                 countGift = 0;
@@ -379,6 +386,9 @@ public class ActivatorItems : MonoBehaviour
         else
         {
             newGift = diContainer.InstantiatePrefabForComponent<Gift>(startGifts[startColorGift - 1], Vector3.zero, Quaternion.identity, parentStartGift);
+
+            // добавление в список движущихся предметов
+            if (newGift is IMove move) activationRoad.MoveObjects.Add(newGift);
         }
 
         if(startCountGift < 5)
@@ -399,6 +409,9 @@ public class ActivatorItems : MonoBehaviour
         newEmpty.transform.localScale = new Vector3(gameManager.WidthTrack / 10, gameManager.WidthTrack / 10, newEmpty.transform.localScale.z);
         countEmpty++;
 
+        // добавление в список движущихся предметов
+        if (newEmpty is IMove move) activationRoad.MoveObjects.Add(newEmpty);
+
         if (countEmpty == spawner.EmptyOnScene.Count)
         {
             countEmpty = 0;
@@ -412,6 +425,9 @@ public class ActivatorItems : MonoBehaviour
         Empty newEmpty = spawner.EmptyFlagOnScene[countEmptyFlag];
         newEmpty.transform.localScale = new Vector3(gameManager.WidthTrack / 10, gameManager.WidthTrack / 10, newEmpty.transform.localScale.z);
         countEmptyFlag++;
+
+        // добавление в список движущихся предметов
+        if (newEmpty is IMove move) activationRoad.MoveObjects.Add(newEmpty);
 
         if (countEmptyFlag == spawner.EmptyFlagOnScene.Count)
         {
@@ -446,7 +462,7 @@ public class ActivatorItems : MonoBehaviour
     /// Добавление препятствия
     /// </summary>
     /// <returns></returns>
-    private Block AddBlock(int numberTrack)
+    private Block AddBlock()
     {
         int indexBlockScene = 0;
                 
@@ -461,17 +477,14 @@ public class ActivatorItems : MonoBehaviour
             indexBlockScene = locationSettings.Locations[activationRoad.CurrentLocation].LocationBlocks[0].Id;
         }
 
-        int numTrackSettings = locationSettings.Locations[activationRoad.CurrentLocation].LocationBlocks[0].NumberTrack;
-
-        if(numTrackSettings > 0)
-        {
-
-        }
-
         Block newBlock = spawner.BlockOnScene[indexBlockScene].Blocks[countBlock[indexBlockScene]];
         newBlock.transform.localScale = new Vector3(gameManager.WidthTrack / 10, newBlock.transform.localScale.y, newBlock.transform.localScale.z);
 
         countBlock[indexBlockScene]++;
+
+        // добавление в список движущихся предметов
+        if (newBlock is IMove move) activationRoad.MoveObjects.Add(newBlock);
+
 
         if (countBlock[indexBlockScene] == spawner.BlockOnScene[indexBlockScene].Blocks.Count)
         {

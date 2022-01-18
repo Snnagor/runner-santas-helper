@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class FallGift : MoveObjects
 {
@@ -8,6 +9,9 @@ public class FallGift : MoveObjects
     [SerializeField] private MeshRenderer tape;
    
     Rigidbody rb;
+
+    //[Inject]
+    //private ActivatorRoad activationRoad;
 
     private void Awake()
     {
@@ -22,7 +26,7 @@ public class FallGift : MoveObjects
 
         rb.AddForce(direction * 40f, ForceMode.Impulse);
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 
     public void ChangeMat(Material _matBox, Material _matTape)
@@ -30,5 +34,10 @@ public class FallGift : MoveObjects
         box.material = _matBox;
         tape.material = _matTape;
     }
+
+    //private void OnDestroy()
+    //{       
+    //    activationRoad.MoveObjects.Remove(this);
+    //}
 
 }

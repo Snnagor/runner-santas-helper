@@ -5,7 +5,7 @@ using Zenject;
 
 public class Sled : MonoBehaviour
 {    
-    public float DeltaSpeed { get; set; }
+    public float DeltaSpeed { get; set; }    
 
     #region Injects
 
@@ -20,16 +20,18 @@ public class Sled : MonoBehaviour
     #endregion
 
     private void OnTriggerEnter(Collider other)
-    {        
+    {       
         HitBlock(other);
     }
 
     private void HitBlock(Collider other)
     {       
             Rigidbody rb = other.GetComponent<Rigidbody>();
-            Deactivator block = other.GetComponent<Deactivator>();
-            if (rb != null && block != null)
-            {               
+         
+            if (rb != null)
+            {
+                
+               
                 rb.isKinematic = false;
 
                 Vector3 direction = (other.gameObject.transform.position - transform.position).normalized ;
@@ -38,7 +40,10 @@ public class Sled : MonoBehaviour
                 float dirY = Random.Range(0.3f, 0.6f);
 
                 rb.AddForce(new Vector3(dirX, dirY, 1f) * (40f + DeltaSpeed/3), ForceMode.Impulse);
+
+                Deactivator block = other.gameObject.AddComponent<Deactivator>();
                 block.HitBlockBool = true;
             }        
     }
+
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6952557506725750845}
   - component: {fileID: 957358609680914707}
   - component: {fileID: -5359613685822352000}
-  - component: {fileID: -1941042090683937666}
   m_Layer: 3
   m_Name: IcicleMini
   m_TagString: Block
@@ -76,18 +75,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.388239, y: 12.358063, z: 4.3340745}
   m_Center: {x: 0.024176598, y: 0.5154495, z: -0.002033949}
---- !u!114 &-1941042090683937666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4827603555767926992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1a60f920ee89540a6b11478ee6dceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5869013548023058781
 PrefabInstance:
   m_ObjectHideFlags: 0

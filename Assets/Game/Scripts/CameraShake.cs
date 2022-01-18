@@ -45,6 +45,8 @@ public class CameraShake : MonoBehaviour
     private void Awake()
     {        
         virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        virtualCameraNoise.m_NoiseProfile = null;
     }
 
     void Update()

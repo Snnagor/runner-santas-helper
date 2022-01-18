@@ -33,6 +33,7 @@ public class GameManager: MonoBehaviour
     private RunnerAnimation runnerAnimation;
     private RunnerMove runnerMove;
     private DataManager dataManager;
+    
 
     [Inject]
     private void Construct(Config _config, 
@@ -46,7 +47,7 @@ public class GameManager: MonoBehaviour
         config = _config;
         runnerAnimation = _runnerAnimation;
         runnerMove = _runnerMove;
-        dataManager = _dataManager;
+        dataManager = _dataManager;        
     }
 
     #endregion
@@ -185,4 +186,5 @@ public class GameManager: MonoBehaviour
            HaveTutorial = false;
     }
 
+   
 }

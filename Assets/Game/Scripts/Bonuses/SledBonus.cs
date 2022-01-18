@@ -18,7 +18,8 @@ public class SledBonus : MonoBehaviour, IBonus
     [SerializeField] private Transform gifts;
     [SerializeField] private float timeBonus;
     [SerializeField] private Sled sled;   
-    [SerializeField] private float speedSledMultipl;    
+    [SerializeField] private float speedSledMultipl;
+
 
     public bool Enable { get; set; }
     public float TimeBonus { get => timeBonus; set => timeBonus = value; }
@@ -75,7 +76,9 @@ public class SledBonus : MonoBehaviour, IBonus
             runnerAnim.AnimSled(true);
 
             player.localPosition = new Vector3(player.localPosition.x, player.localPosition.y + 3, player.localPosition.z);
-            
+            player.localRotation = Quaternion.Euler(Vector3.zero);
+            sled.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
 
             oldYPosGifts = gifts.localPosition.y;
             oldZPosGifts = gifts.localPosition.z;
@@ -83,6 +86,7 @@ public class SledBonus : MonoBehaviour, IBonus
             gifts.localEulerAngles = new Vector3(45, 0, 0);
 
             runnerMove.MigEnable(false);
+
         }
     }       
 
@@ -118,6 +122,7 @@ public class SledBonus : MonoBehaviour, IBonus
         runnerAnim.AnimSled(false);
 
         player.localPosition = Vector3.zero;
+        player.localRotation = Quaternion.Euler(Vector3.zero);
 
         gifts.localEulerAngles = Vector3.zero;
         gifts.localPosition = new Vector3(gifts.localPosition.x, oldYPosGifts, oldZPosGifts);
@@ -163,6 +168,12 @@ public class SledBonus : MonoBehaviour, IBonus
     public void Execute()
     {
         CounterTimeBonus();
+
+        if (Enable)
+        {
+            player.Rotate(Vector3.up * 50f * Time.deltaTime);
+            sled.transform.Rotate(Vector3.up * 50f * Time.deltaTime);
+        }       
     }
 
 }

@@ -36,9 +36,9 @@ public class FallGiftLose : MoveObjects
         tape.material = _matTape;
     }
 
-    private void Update()
+    public override void Execute()
     {
-        base.Move();
+        Move();
 
         if (gameObject.activeSelf)
         {
@@ -50,8 +50,23 @@ public class FallGiftLose : MoveObjects
         }
     }
 
+    //private void Update()
+    //{
+    //    base.Move();
+
+    //    if (gameObject.activeSelf)
+    //    {
+    //        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+    //        if (position.x < 0 || position.x > 1 || position.y < 0 || position.y > 1)
+    //        {
+    //            OnBecameInvisible();
+    //        }
+    //    }
+    //}
+
     void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
+
 }

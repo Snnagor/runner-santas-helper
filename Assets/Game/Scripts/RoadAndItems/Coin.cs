@@ -5,14 +5,38 @@ public class Coin : MoveObjects
 {
     [SerializeField] private Transform meshCoin;
 
-    private void Update()
+    //private void Update()
+    //{
+    //    if (magnetBonus.Enable )
+    //    {
+    //        float dist = Vector3.Distance(transform.position, magnetBonus.transform.position);
+
+    //        if (dist < magnetBonus.DistanseMagnet)
+    //        {               
+    //            MoveToMagnet(magnetBonus.transform.position, magnetBonus.AccelerationMagnet);
+    //        }
+    //        else
+    //        {
+    //            Vector3 target = new Vector3(transform.position.x, transform.position.y, transform.position.z - 10f);
+    //            MoveToMagnet(target, 0);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Move();
+    //    }
+             
+    //    meshCoin.Rotate(Vector3.left * 150f * Time.deltaTime);
+    // }
+
+    public override void Execute()
     {
-        if (magnetBonus.Enable )
+        if (magnetBonus.Enable)
         {
             float dist = Vector3.Distance(transform.position, magnetBonus.transform.position);
 
             if (dist < magnetBonus.DistanseMagnet)
-            {               
+            {
                 MoveToMagnet(magnetBonus.transform.position, magnetBonus.AccelerationMagnet);
             }
             else
@@ -25,9 +49,9 @@ public class Coin : MoveObjects
         {
             Move();
         }
-             
+
         meshCoin.Rotate(Vector3.left * 150f * Time.deltaTime);
-     }
+    }
 
     /// <summary>
     /// Движение на магнит
@@ -42,5 +66,5 @@ public class Coin : MoveObjects
         }
     }
 
-
+    
 }

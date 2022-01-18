@@ -31,19 +31,22 @@ public class RunnerMove : MonoBehaviour
     private Config config;
     private LocationsSettings locationSettings;
     private SoundManager soundManager;
+    private ActivatorRoad activatorRoad;
 
     [Inject]
     private void Construct(Config _config, 
                            SignalBus _signalBus, 
                            InputHandler _input, 
                            GameManager _gameManager, 
-                           SoundManager _soundManager)
+                           SoundManager _soundManager,
+                           ActivatorRoad _activatorRoad)
     {
         config = _config;        
         signalBus = _signalBus;
         input = _input;
         gameManager = _gameManager;
         soundManager = _soundManager;
+        activatorRoad = _activatorRoad;
     }
 
     #endregion
@@ -146,7 +149,7 @@ public class RunnerMove : MonoBehaviour
         {            
             takeCoinFX.Play();
             signalBus.Fire(new TakeCoinSignal());
-            other.gameObject.SetActive(false);            
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -175,7 +178,8 @@ public class RunnerMove : MonoBehaviour
                 runnerAnim.AnimRunBox(true);
             }
             
-            other.gameObject.SetActive(false);            
+            other.gameObject.SetActive(false);
+           
         }
     }
 
