@@ -3,7 +3,8 @@ using UnityEngine;
 using Zenject;
 
 public class SledBonus : MonoBehaviour, IBonus
-{    
+{
+    [SerializeField] private bool rotationSled;
     [SerializeField] private Sprite iconBonus;
 
     [SerializeField] private bool haveTimer;
@@ -20,12 +21,13 @@ public class SledBonus : MonoBehaviour, IBonus
     [SerializeField] private Sled sled;   
     [SerializeField] private float speedSledMultipl;
 
-
     public bool Enable { get; set; }
     public float TimeBonus { get => timeBonus; set => timeBonus = value; }
     public float CurrentTimeBonus { get; set; } = -2;
   
     private float oldYPosGifts, oldZPosGifts;
+
+    
 
     #region Injects
 
@@ -169,7 +171,7 @@ public class SledBonus : MonoBehaviour, IBonus
     {
         CounterTimeBonus();
 
-        if (Enable)
+        if (Enable && rotationSled)
         {
             player.Rotate(Vector3.up * 50f * Time.deltaTime);
             sled.transform.Rotate(Vector3.up * 50f * Time.deltaTime);

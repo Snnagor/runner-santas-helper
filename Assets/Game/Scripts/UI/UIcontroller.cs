@@ -282,7 +282,6 @@ public class UIcontroller : MonoBehaviour
         ChangeState(gamePanel);
     }
 
-
     /// <summary>
     /// Пауза UI
     /// </summary>
@@ -296,6 +295,8 @@ public class UIcontroller : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
+    #if UNITY_ANDROID
+
         if(gameManager.QtyLife > 0)
         {
             ContinuePanel();
@@ -304,6 +305,11 @@ public class UIcontroller : MonoBehaviour
         {
             LosePanel();
         }
+    #else
+
+         LosePanel();
+
+    #endif
     }
 
     /// <summary>
@@ -367,9 +373,9 @@ public class UIcontroller : MonoBehaviour
         scoreBonusValue.text = scoreManager.TotalScore.ToString();        
     }
 
-    #endregion
+#endregion
 
-    #region Buttons
+#region Buttons
 
 
     /// <summary>
@@ -575,7 +581,7 @@ public class UIcontroller : MonoBehaviour
         soundManager.Click();
     }
 
-    #endregion
+#endregion
 
     private void OnApplicationQuit()
     {
