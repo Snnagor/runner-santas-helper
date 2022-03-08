@@ -17,27 +17,27 @@ public class UIcontroller : MonoBehaviour
     [SerializeField] private Text coinQtyText;
     [SerializeField] private Text giftQtyText;
 
-    [Header("Bonus Panel")]    
-    [SerializeField] private ImageTimer[] bonusTimer;    
-   // [SerializeField] private GameObject[] bonusTimeItems;
+    [Header("Bonus Panel")]
+    [SerializeField] private ImageTimer[] bonusTimer;
+    // [SerializeField] private GameObject[] bonusTimeItems;
 
     private int currentBonusPanel;
 
     [Header("Lose Panel")]
-    [SerializeField] private Text distanceValue;    
+    [SerializeField] private Text distanceValue;
     [SerializeField] private Text countBonusValue;
     [SerializeField] private Text scoreGiftValue;
     [SerializeField] private Text scoreBonusValue;
-    
+
 
     [Header("UI Settings")]
     [SerializeField] private Text countTrackValue;
-    [SerializeField] private Text widthTrackValue;    
+    [SerializeField] private Text widthTrackValue;
 
     [Header("UI Canvases")]
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject pausePanel;    
+    [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject topPanel;
@@ -58,13 +58,13 @@ public class UIcontroller : MonoBehaviour
     // private SettingsFile settingsFile;
 
     [Inject]
-    private void Construct(Config _config, 
-                           SignalBus _signalBus, 
-                           ScoreManager _scoreManager, 
-                           DataManager _dataManager, 
+    private void Construct(Config _config,
+                           SignalBus _signalBus,
+                           ScoreManager _scoreManager,
+                           DataManager _dataManager,
                            GameManager _gameManager,
                            SoundManager _soundManager)
-    {       
+    {
         signalBus = _signalBus;
         scoreManager = _scoreManager;
         dataManager = _dataManager;
@@ -94,13 +94,13 @@ public class UIcontroller : MonoBehaviour
     }
     private void LoseSignal()
     {
-        StartCoroutine(LoseCoroutine());       
+        StartCoroutine(LoseCoroutine());
     }
 
     private void MeterSignal()
     {
-        if(distanceValueText != null)
-        distanceValueText.text = scoreManager.CountMeter.ToString();
+        if (distanceValueText != null)
+            distanceValueText.text = scoreManager.CountMeter.ToString();
         UpdateScoreInfo();
     }
 
@@ -128,8 +128,8 @@ public class UIcontroller : MonoBehaviour
             config.Restart = false;
         }
 
-        if(countTrackValue != null)
-           countTrackValue.text = gameManager.CountTrack.ToString();
+        if (countTrackValue != null)
+            countTrackValue.text = gameManager.CountTrack.ToString();
 
         if (widthTrackValue != null)
             widthTrackValue.text = gameManager.WidthTrack.ToString();
@@ -145,18 +145,18 @@ public class UIcontroller : MonoBehaviour
     /// </summary>
     /// <param name="state"></param>
     private void ChangeState(GameObject state)
-    {      
+    {
         if (currentPanel != null)
         {
-            if(state != pausePanel)
-               currentPanel.SetActive(false);
+            if (state != pausePanel)
+                currentPanel.SetActive(false);
         }
-                  
-        
+
+
         currentPanel = state;
 
-        if(currentPanel != null)
-        currentPanel.SetActive(true);
+        if (currentPanel != null)
+            currentPanel.SetActive(true);
     }
 
     #region Update Info
@@ -169,14 +169,14 @@ public class UIcontroller : MonoBehaviour
 
     private void UpdateCoinInfo()
     {
-        if(coinQtyText != null)
-          coinQtyText.text = scoreManager.CountCoin.ToString();
+        if (coinQtyText != null)
+            coinQtyText.text = scoreManager.CountCoin.ToString();
     }
 
     private void UpdateGiftInfo()
     {
-        if(giftQtyText != null)
-          giftQtyText.text = scoreManager.GiftQty.ToString();
+        if (giftQtyText != null)
+            giftQtyText.text = scoreManager.GiftQty.ToString();
     }
 
     #endregion
@@ -190,11 +190,11 @@ public class UIcontroller : MonoBehaviour
     /// <param name="time"></param>
     /// <param name="actionIndexBonus"></param>
     public void UpdateBonusInfoStart(Sprite _sprite, float time, int actionIndexBonus)
-    {        
+    {
         for (int i = 0; i < bonusTimer.Length; i++)
         {
             if (bonusTimer[i].Enable)
-            {                
+            {
                 continue;
             }
             else
@@ -202,12 +202,12 @@ public class UIcontroller : MonoBehaviour
                 bonusTimer[i].IconBonus.sprite = _sprite;
                 bonusTimer[i].IconBonusBack.sprite = _sprite;
                 bonusTimer[i].MaxTime = time;
-                bonusTimer[i].gameObject.SetActive(true);                
+                bonusTimer[i].gameObject.SetActive(true);
                 bonusTimer[i].ActionIndexBonus = actionIndexBonus;
-                bonusTimer[i].Enable = true;                
+                bonusTimer[i].Enable = true;
                 break;
             }
-        }                     
+        }
     }
 
     /// <summary>
@@ -216,11 +216,11 @@ public class UIcontroller : MonoBehaviour
     /// <param name="time"></param>
     /// <param name="actionIndexBonus"></param>
     public void ResetTimer(float time, int actionIndexBonus)
-    {       
+    {
 
         for (int i = 0; i < bonusTimer.Length; i++)
         {
-            if(bonusTimer[i].ActionIndexBonus == actionIndexBonus)
+            if (bonusTimer[i].ActionIndexBonus == actionIndexBonus)
             {
                 bonusTimer[i].ReseTime();
                 break;
@@ -235,8 +235,8 @@ public class UIcontroller : MonoBehaviour
     {
         bonusTimer[currentBonusPanel].gameObject.SetActive(false);
 
-        if(currentBonusPanel > 0)
-        currentBonusPanel--;
+        if (currentBonusPanel > 0)
+            currentBonusPanel--;
     }
 
 
@@ -266,8 +266,8 @@ public class UIcontroller : MonoBehaviour
     {
         ChangeState(startPanel);
 
-        if(startTotalScoreValueText != null)
-        startTotalScoreValueText.text = dataManager.LoadFirstTopData().ToString();
+        if (startTotalScoreValueText != null)
+            startTotalScoreValueText.text = dataManager.LoadFirstTopData().ToString();
 
         if (startTotalCoinValueText != null)
             startTotalCoinValueText.text = dataManager.LoadTotalCoinData().ToString();
@@ -291,13 +291,13 @@ public class UIcontroller : MonoBehaviour
         ChangeState(pausePanel);
     }
 
-   IEnumerator LoseCoroutine()
+    IEnumerator LoseCoroutine()
     {
         yield return new WaitForSeconds(2f);
 
-    #if UNITY_ANDROID
+#if UNITY_ANDROID
 
-        if(gameManager.QtyLife > 0)
+        if (gameManager.QtyLife > 0)
         {
             ContinuePanel();
         }
@@ -305,11 +305,11 @@ public class UIcontroller : MonoBehaviour
         {
             LosePanel();
         }
-    #else
+#else
 
          LosePanel();
 
-    #endif
+#endif
     }
 
     /// <summary>
@@ -327,14 +327,14 @@ public class UIcontroller : MonoBehaviour
     private void ContinuePanel()
     {
         gameManager.QtyLife--;
-        ChangeState(continuePanel);        
+        ChangeState(continuePanel);
     }
 
     /// <summary>
     /// Настройки UI
     /// </summary>
     private void SettingsPanel()
-    {        
+    {
         ChangeState(settingsPanel);
     }
 
@@ -370,13 +370,17 @@ public class UIcontroller : MonoBehaviour
         distanceValue.text = scoreManager.CountMeter.ToString();
         countBonusValue.text = scoreManager.CountCoin.ToString();
         scoreGiftValue.text = scoreManager.GiftQty.ToString();
-        scoreBonusValue.text = scoreManager.TotalScore.ToString();        
+        scoreBonusValue.text = scoreManager.TotalScore.ToString();
     }
 
-#endregion
+    #endregion
 
-#region Buttons
+    #region Buttons
 
+    public void DeletePrefBtn()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
     /// <summary>
     /// Кнопка закончить игру
@@ -509,7 +513,7 @@ public class UIcontroller : MonoBehaviour
         SoundClick();
 
         signalBus.Fire(new MusicSignal());
-        
+
     }
 
     /// <summary>
@@ -528,13 +532,13 @@ public class UIcontroller : MonoBehaviour
     /// </summary>
     public void LeftArrowCountTrack()
     {
-        if(gameManager.CountTrack > config.MinCountTrack)
+        if (gameManager.CountTrack > config.MinCountTrack)
         {
-            gameManager.CountTrack --;
+            gameManager.CountTrack--;
             countTrackValue.text = gameManager.CountTrack.ToString();
             signalBus.Fire(new ChangeCountTrackSignal());
         }
-           
+
     }
 
     /// <summary>
@@ -544,10 +548,10 @@ public class UIcontroller : MonoBehaviour
     {
         if (gameManager.CountTrack < config.MaxCountTrack)
         {
-            gameManager.CountTrack ++;
+            gameManager.CountTrack++;
             countTrackValue.text = gameManager.CountTrack.ToString();
             signalBus.Fire(new ChangeCountTrackSignal());
-        }            
+        }
     }
 
     /// <summary>
@@ -560,7 +564,7 @@ public class UIcontroller : MonoBehaviour
             gameManager.WidthTrack -= 5;
             widthTrackValue.text = gameManager.WidthTrack.ToString();
             signalBus.Fire(new ChangeWidthTrackSignal());
-        }            
+        }
     }
 
     /// <summary>
@@ -573,7 +577,7 @@ public class UIcontroller : MonoBehaviour
             gameManager.WidthTrack += 5;
             widthTrackValue.text = gameManager.WidthTrack.ToString();
             signalBus.Fire(new ChangeWidthTrackSignal());
-        }            
+        }
     }
 
     private void SoundClick()
@@ -581,7 +585,7 @@ public class UIcontroller : MonoBehaviour
         soundManager.Click();
     }
 
-#endregion
+    #endregion
 
     private void OnApplicationQuit()
     {

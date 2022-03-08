@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3622987543215119350
 Transform:
   m_ObjectHideFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   pausePanel: {fileID: 2363067280002364084}
   topBlockTutorial: 1
   matchTutorial: 0
+  LeftRightTutorial: 0
 --- !u!54 &141123995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -316,6 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222178433018444899}
+  - component: {fileID: 7808751655485276646}
   m_Layer: 10
   m_Name: PauseManager
   m_TagString: Untagged
@@ -338,6 +340,22 @@ Transform:
   m_Father: {fileID: 7064098200077500928}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7808751655485276646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346708190843069477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d94352e1aacec40b66e2a0f1eb1334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 2363067280002364084}
+  topBlockTutorial: 1
+  matchTutorial: 0
+  LeftRightTutorial: 0
 --- !u!1 &4632742533971085591
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,5 +32,6 @@ public class Installer : MonoInstaller
         Container.DeclareSignal<MusicSignal>();
         Container.DeclareSignal<SoundSignal>();
         Container.DeclareSignal<ContinueSignal>();
+        Container.DeclareSignal<TopTutorialSignal>();
     }
 }

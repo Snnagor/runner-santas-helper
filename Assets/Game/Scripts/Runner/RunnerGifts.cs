@@ -30,19 +30,22 @@ public class RunnerGifts : MonoBehaviour
     private DiContainer diContainer;
     private SoundManager soundManager;
     private ActivatorRoad activationRoad;
+    private DataManager dataManager;
 
     [Inject]
     private void Construct(GameManager _gameManager, 
                            SignalBus _signalBus, 
                            DiContainer _diContainer, 
                            SoundManager _soundManager,
-                           ActivatorRoad _activationRoad)
+                           ActivatorRoad _activationRoad,
+                           DataManager _dataManager)
     {       
         gameManager = _gameManager;
         signalBus = _signalBus;
         diContainer = _diContainer;
         soundManager = _soundManager;
         activationRoad = _activationRoad;
+        dataManager = _dataManager;
     }
 
     #endregion
@@ -115,7 +118,14 @@ public class RunnerGifts : MonoBehaviour
             if (CountActiveGift > 2 && arrayColor[CountActiveGift - 1] == arrayColor[CountActiveGift - 2] && arrayColor[CountActiveGift - 1] == arrayColor[CountActiveGift - 3])
             {                
                 StartCoroutine(DeleteCoroutine(3));
-            }                        
+            }
+            else
+            {
+                if (CountActiveGift == 6 && dataManager.LoadDataTutorial2())
+                {
+                    signalBus.Fire(new TopTutorialSignal());
+                }
+            }
         }
         else
         {
@@ -161,13 +171,12 @@ public class RunnerGifts : MonoBehaviour
                 {
                     PosBonusObject = gifts[CountActiveGift - i].transform.position;                    
                 }
-
-                //if (i == 3)
-                //{
-                //    soundManager.Gift3Line();
-                //}
             }
         }
+
+#if UNITY_ANDROID
+        Handheld.Vibrate();
+#endif
 
         TakeBonus();
 

@@ -41,9 +41,7 @@ public class InputHandler
     /// </summary>
     /// <returns></returns>
     private Vector2 GetSwipe()
-    {
-        
-
+    {        
         if (Input.touchCount > 0)
         {           
             Touch touch = Input.GetTouch(0);
@@ -53,7 +51,6 @@ public class InputHandler
             {
                 beginTouch = touch.position; 
             }
-
 
             //конечная позиция
             if (touch.phase == TouchPhase.Ended && beginTouch != Vector2.zero)

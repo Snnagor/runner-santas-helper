@@ -17,6 +17,7 @@ TagManager:
   - Sled
   - Flag
   - Coin
+  - NoBlock
   layers:
   - Default
   - TransparentFX
