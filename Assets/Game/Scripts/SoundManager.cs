@@ -185,7 +185,10 @@ public class SoundManager : MonoBehaviour
 
     public void SlideStep()
     {
-        PlaySoundShot(slideStep, volume);
+        if(Time.timeScale > 0)
+        {
+            PlaySoundShot(slideStep, volume);
+        }        
     }
 
     public void HitBlock()

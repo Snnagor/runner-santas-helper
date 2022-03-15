@@ -18,7 +18,7 @@ public class RunnerMove : MonoBehaviour
     public bool AnimRun { get; set; } = true;
     public bool AnimBox { get; set; } = true;
 
-    private RunnerAnimation runnerAnim;   
+    private RunnerAnimation runnerAnim;
     private float directionX = 0;
 
     private RunnerGifts runnerGifts;
@@ -31,19 +31,22 @@ public class RunnerMove : MonoBehaviour
     private Config config;
     private LocationsSettings locationSettings;
     private SoundManager soundManager;
+    private ActivatorRoad activatorRoad;
 
     [Inject]
-    private void Construct(Config _config, 
-                           SignalBus _signalBus, 
-                           InputHandler _input, 
-                           GameManager _gameManager, 
-                           SoundManager _soundManager)
+    private void Construct(Config _config,
+                           SignalBus _signalBus,
+                           InputHandler _input,
+                           GameManager _gameManager,
+                           SoundManager _soundManager,
+                           ActivatorRoad _activatorRoad)
     {
-        config = _config;        
+        config = _config;
         signalBus = _signalBus;
         input = _input;
         gameManager = _gameManager;
         soundManager = _soundManager;
+        activatorRoad = _activatorRoad;
     }
 
     #endregion
@@ -63,7 +66,7 @@ public class RunnerMove : MonoBehaviour
     private void ContinueSignal()
     {
         snowBoom.gameObject.SetActive(false);
-        runnerAnim.AnimGetUp();        
+        runnerAnim.AnimGetUp();
     }
 
     #endregion
@@ -76,7 +79,7 @@ public class RunnerMove : MonoBehaviour
         if (CollisionBlock)
         {
             Lose(other);
-        }            
+        }
     }
 
     private void Awake()
@@ -86,7 +89,7 @@ public class RunnerMove : MonoBehaviour
     }
 
     public void MigEnable(bool value)
-    {        
+    {
         if (value)
         {
             for (int i = 0; i < playersMeshes.Length; i++)
@@ -107,15 +110,15 @@ public class RunnerMove : MonoBehaviour
     /// Движение игрока
     /// </summary>
     private void Run()
-    {       
+    {
         if (gameManager.IsRun)
         {
-            if(AnimRun)
-              runnerAnim.AnimRun(true);       
-            
+            if (AnimRun)
+                runnerAnim.AnimRun(true);
+
             Vector3 target = new Vector3(Sidestep(), transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, target, gameManager.SpeedSidestep * Time.deltaTime);            
-        }            
+            transform.position = Vector3.MoveTowards(transform.position, target, gameManager.SpeedSidestep * Time.deltaTime);
+        }
     }
 
     /// <summary>
@@ -123,18 +126,18 @@ public class RunnerMove : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     private float Sidestep()
-    {        
+    {
         if (input.IsInput() && gameManager.IsRun)
         {
             directionX = input.InputX();
 
             directionX *= gameManager.WidthTrack;
 
-           // soundManager.SlideStep();
-        }           
+            // soundManager.SlideStep();
+        }
 
         return directionX;
-    }    
+    }
 
     /// <summary>
     /// Взять бонус
@@ -143,10 +146,10 @@ public class RunnerMove : MonoBehaviour
     private void TakeCoin(Collider other)
     {
         if (other.gameObject.CompareTag("Coin"))
-        {            
+        {
             takeCoinFX.Play();
             signalBus.Fire(new TakeCoinSignal());
-            other.gameObject.SetActive(false);            
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -164,9 +167,9 @@ public class RunnerMove : MonoBehaviour
 
             Gift takenGift = other.GetComponent<Gift>();
             if (takenGift)
-            {                
+            {
                 colorIndexGift = takenGift.ColorGift;
-            }                       
+            }
 
             runnerGifts.ActiveGift(other.transform.position, colorIndexGift);
 
@@ -174,12 +177,13 @@ public class RunnerMove : MonoBehaviour
             {
                 runnerAnim.AnimRunBox(true);
             }
-            
-            other.gameObject.SetActive(false);            
+
+            other.gameObject.SetActive(false);
+
         }
     }
 
-    
+
     /// <summary>
     /// Врезался в препятствие
     /// </summary>
@@ -197,7 +201,7 @@ public class RunnerMove : MonoBehaviour
             runnerGifts.Continue();
             blockBoom.Play();
             runnerAnim.AnimLose();
-            signalBus.Fire(new LoseSignal());            
+            signalBus.Fire(new LoseSignal());
         }
 
         //if (other.gameObject.CompareTag("Snowman"))

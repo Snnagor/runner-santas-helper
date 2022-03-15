@@ -55,9 +55,9 @@ public class MagnetBonus : MonoBehaviour, IBonus
         CurrentTimeBonus = TimeBonus;
     }
 
-    private void Update()
+    public void Execute()
     {
-       CounterTimeBonus();
+        CounterTimeBonus();
     }
 
     public void ResetTimer()

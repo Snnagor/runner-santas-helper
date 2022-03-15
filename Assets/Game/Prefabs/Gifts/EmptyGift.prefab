@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f462125a6e96b94bb5689e0f280e346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxMesh: {fileID: 0}
+  tapeMesh: {fileID: 0}
 --- !u!65 &1942602591048432809
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -253,6 +255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558524474320308824, guid: 3b20c36dd7595954aa67554c5e5d7037,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b20c36dd7595954aa67554c5e5d7037, type: 3}

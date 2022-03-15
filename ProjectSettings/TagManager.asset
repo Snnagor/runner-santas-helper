@@ -17,6 +17,7 @@ TagManager:
   - Sled
   - Flag
   - Coin
+  - NoBlock
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Sled
   - Destroyer
   - NoDestroy
-  - 
+  - GiftsInHead
   - 
   - 
   - 

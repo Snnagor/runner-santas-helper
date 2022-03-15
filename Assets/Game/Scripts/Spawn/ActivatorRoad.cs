@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +9,8 @@ public class ActivatorRoad : MonoBehaviour
 
     private float positionNewRoadZ;   
 
-    public int CurrentLocation { get; set; }
+    public int CurrentLocation { get; set; }    
+
     private int currentIdRoadScene;
     private int[] countRoadActive;
 
@@ -22,6 +24,7 @@ public class ActivatorRoad : MonoBehaviour
     private LocationsSettings locationSettings;
     private ActivatorItems activatorItems;
     private FXSnowFalling fXSnowFalling;
+    private DataManager dataManager;
 
     [Inject]
     private void Construct(Config _config,
@@ -29,7 +32,8 @@ public class ActivatorRoad : MonoBehaviour
                            Spawner _spawner,
                            LocationsSettings _locationSettings,
                            ActivatorItems _activatorItems,
-                           FXSnowFalling _fXSnowFalling)
+                           FXSnowFalling _fXSnowFalling,
+                           DataManager _dataManager)
     {        
         gameManager = _gameManager;
         spawner = _spawner;        
@@ -37,17 +41,21 @@ public class ActivatorRoad : MonoBehaviour
         locationSettings = _locationSettings;
         activatorItems = _activatorItems;
         fXSnowFalling = _fXSnowFalling;
+        dataManager = _dataManager;
     }
 
     #endregion
+
+    private List<IMove> moveObjects = new List<IMove>();
+    public List<IMove> MoveObjects { get => moveObjects; set => moveObjects = value; }
 
     void Start()
     {
        countRoadActive = new int[spawner.RoadOnScene.Count];
 
-        if (!gameManager.HaveTutorial)
+        if (!gameManager.HaveTutorial || !dataManager.LoadDataTutorial())
         {
-            CurrentLocation = 1;
+            CurrentLocation = 1;            
         }
 
        ActivateRoad(config.StartPositionRoad);
@@ -66,6 +74,9 @@ public class ActivatorRoad : MonoBehaviour
         newRoad.transform.position = new Vector3(0, 0, positionZ);
         newRoad.gameObject.SetActive(true);
 
+        // добавление в список движущихся предметов
+        if (newRoad is IMove) moveObjects.Add(newRoad);
+
         CounterRoadPrefabs(indexRoadScene);
 
         if (locationSettings.Locations[CurrentLocation].ID == 3)
@@ -73,8 +84,7 @@ public class ActivatorRoad : MonoBehaviour
         else
             snowEanble = true;
 
-        //if (gameManager.HaveTutorial)
-        //    gameManager.HaveTutorial = false;
+        
     }    
 
     /// <summary>
@@ -85,11 +95,17 @@ public class ActivatorRoad : MonoBehaviour
     {
         _road.gameObject.SetActive(false);
         _road.transform.position = Vector3.zero;
+
+        // удаление из списка движущихся предметов
+        if (_road is IMove) moveObjects.Remove(_road);
     }
 
     void Update()
     {
-        
+        foreach (var item in MoveObjects)
+        {
+            item.Execute();
+        }
 
         if (newRoad.Begin)
         {            
@@ -120,9 +136,6 @@ public class ActivatorRoad : MonoBehaviour
 
             currentRoad.Begin = false;           
         }
-
-
-        
     }
 
     private void CounterLocation()

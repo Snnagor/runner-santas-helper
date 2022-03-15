@@ -8,7 +8,14 @@ public class Gift : MoveObjects
 
     public int ColorGift { get => colorGift; }
 
-    private void Update()
+    //private void Update()
+    //{
+    //    Move();
+
+    //    meshGift.Rotate(Vector3.up * -150f * Time.deltaTime);
+    //}
+
+    public override void Execute()
     {
         Move();
 

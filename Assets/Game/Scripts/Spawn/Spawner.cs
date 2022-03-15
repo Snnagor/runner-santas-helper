@@ -176,6 +176,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform blocksParent;
     [SerializeField] private Transform emptyParent;
     [SerializeField] private Transform giftParent;
+        
 
     #region Injects
     private DiContainer diContainer;

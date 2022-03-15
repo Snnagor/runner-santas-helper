@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class MoveObjects : MonoBehaviour
+public abstract class MoveObjects : MonoBehaviour, IMove
 {    
     protected SignalBus signalBus;
     protected GameManager gameManager;
     private Config config;
     protected MagnetBonus magnetBonus;
+    private ActivatorRoad activationRoad;
 
     #region Injects
 
@@ -16,20 +17,17 @@ public class MoveObjects : MonoBehaviour
     private void Construct(Config _config, 
                            SignalBus _signalBus, 
                            GameManager _gameManager,
-                           MagnetBonus _magnetBonus)
+                           MagnetBonus _magnetBonus,
+                           ActivatorRoad _activationRoad)
     {                
         signalBus = _signalBus;
         gameManager = _gameManager;
         config = _config;
         magnetBonus = _magnetBonus;
+        activationRoad = _activationRoad;
     }
 
-    #endregion            
-
-    private void Awake()
-    {
-       
-    }
+    #endregion                
 
     //Движение объекта
     public virtual void Move()
@@ -41,9 +39,18 @@ public class MoveObjects : MonoBehaviour
         }
     }
 
-
-    private  void Update()
+    public virtual void Execute()
     {
         Move();
+    }
+
+    private void OnDisable()
+    {
+        activationRoad.MoveObjects.Remove(this);
+    }
+
+    private void OnDestroy()
+    {
+        activationRoad.MoveObjects.Remove(this);
     }
 }

@@ -21,4 +21,6 @@ public interface IBonus
     public void ResetTimer();
 
     public void CounterTimeBonus();
+
+    public void Execute();
 }

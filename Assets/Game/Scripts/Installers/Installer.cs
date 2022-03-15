@@ -6,8 +6,18 @@ public class Installer : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<InputHandler>().AsSingle().NonLazy();        
+        BindInput();
+        BindSignals();        
+    }
 
+    private void BindInput()
+    {
+        Container.Bind<InputHandler>().AsSingle().NonLazy();
+        
+    }
+
+    private void BindSignals()
+    {
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<StartSignal>();
         Container.DeclareSignal<LoseSignal>();
@@ -23,5 +33,7 @@ public class Installer : MonoInstaller
         Container.DeclareSignal<MusicSignal>();
         Container.DeclareSignal<SoundSignal>();
         Container.DeclareSignal<ContinueSignal>();
+        Container.DeclareSignal<TopTutorialSignal>();
+        Container.DeclareSignal<TakeDuckSignal>();
     }
 }

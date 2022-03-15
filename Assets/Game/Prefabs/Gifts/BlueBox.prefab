@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5778695446304817695}
   - component: {fileID: 3210746094460190365}
   - component: {fileID: 3168345150332423218}
-  - component: {fileID: -4679426759051426870}
   m_Layer: 0
   m_Name: BlueBox
   m_TagString: Gift
@@ -78,18 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorGift: 2
   meshGift: {fileID: 4596714234877208680}
---- !u!114 &-4679426759051426870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264927219061454208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1a60f920ee89540a6b11478ee6dceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4053369684054708099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558524474320308824, guid: 3b20c36dd7595954aa67554c5e5d7037,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5558524474320308824, guid: 3b20c36dd7595954aa67554c5e5d7037,
         type: 3}

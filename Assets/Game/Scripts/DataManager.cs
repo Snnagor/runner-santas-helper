@@ -10,6 +10,8 @@ public class DataManager : MonoBehaviour
     public const string COINS = "coin";    
     public const string SOUND = "sound";
     public const string MUSIC = "music";
+    public const string TUTORIAL = "tutorial";
+    public const string TUTORIAL2 = "tutorialTop";
     //public const string TOP1 = "top1";
     //public const string TOP2 = "top2";
     //public const string TOP3 = "top3";
@@ -122,7 +124,7 @@ public class DataManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ЗАгрузить лучшие результаты
+    /// Загрузить лучшие результаты
     /// </summary>
     /// <returns></returns>
     public int[] LoadTopData()
@@ -246,5 +248,43 @@ public class DataManager : MonoBehaviour
         //    SaveDataScore();
         //    SaveDataCoin();
         //}
+    }
+
+    /// <summary>
+    /// Сохранить туториал
+    /// </summary>
+    public void SaveDataTutorial()
+    {
+        PlayerPrefs.SetInt(TUTORIAL, 1);
+    }
+
+    /// <summary>
+    /// Загрузить туториал
+    /// </summary>
+    public bool LoadDataTutorial()
+    {
+        if (PlayerPrefs.GetInt(TUTORIAL) == 0)
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
+    /// Сохранить туториал
+    /// </summary>
+    public void SaveDataTutorial2()
+    {
+        PlayerPrefs.SetInt(TUTORIAL2, 1);
+    }
+
+    /// <summary>
+    /// Загрузить туториал
+    /// </summary>
+    public bool LoadDataTutorial2()
+    {
+        if (PlayerPrefs.GetInt(TUTORIAL2) == 0)
+            return true;
+
+        return false;
     }
 }
