@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 1931336213212323719}
   - component: {fileID: 4501957452379373314}
   - component: {fileID: 6803833371618449337}
+  - component: {fileID: 885062654034727307}
   m_Layer: 10
   m_Name: NoBlock
   m_TagString: NoBlock
@@ -326,6 +327,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &885062654034727307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928147851964266879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14668d5daf2b6584c84451de9f5c2c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1473524133146660248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1934,6 @@ MonoBehaviour:
   leftTrack: {fileID: 9189370333392261733}
   rightTrack: {fileID: 2884277364526531997}
   track: {fileID: 7064098200527818891}
-  countCreateTrack: 10
 --- !u!54 &7633427027728320872
 Rigidbody:
   m_ObjectHideFlags: 0

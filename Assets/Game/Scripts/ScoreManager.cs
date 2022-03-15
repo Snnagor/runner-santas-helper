@@ -3,19 +3,30 @@ using Zenject;
 
 public class ScoreManager : MonoBehaviour
 {
-   public int CountMeter { get; set; }
+    public int CountMeter { get; set; }
 
-   public int DisctanseScore { get; set; }
+    public int DisctanseScore { get; set; }
 
-   public int CountCoin { get; set; }
+    public int CountCoin { get; set; }
 
-   public int CoinScore { get; set; }
+    private int countDuck;
+    public int CountDuck
+    {
+        get => countDuck;
+        set
+        {
+            countDuck = value;
+            viewModel.Ducks = countDuck.ToString();
+        }
+    }
 
-   public int GiftQty { get; set; }
+    public int CoinScore { get; set; }
 
-    public int TotalScore 
-    { 
-       get
+    public int GiftQty { get; set; }
+
+    public int TotalScore
+    {
+        get
         {
             return DisctanseScore;
         }
@@ -25,44 +36,49 @@ public class ScoreManager : MonoBehaviour
     private int scoreCoin;
     private int accelerationDistance;
 
-    private SignalBus signalBus;       
-    private Config config;
-    private DoubleCoinBonus doubleCoinBonus;
-
     #region Injects
 
+    private SignalBus signalBus;
+    private Config config;
+    private DoubleCoinBonus doubleCoinBonus;
+    private ViewModel viewModel;
+
     [Inject]
-    private void Construct(Config _config, SignalBus _signalBus, DoubleCoinBonus _doubleCoinBonus)
+    private void Construct(Config _config,
+                           SignalBus _signalBus,
+                           DoubleCoinBonus _doubleCoinBonus,
+                           ViewModel _viewModel)
     {
-        signalBus = _signalBus;        
-       // settingsFile = _settingsFile;
+        signalBus = _signalBus;
         config = _config;
         doubleCoinBonus = _doubleCoinBonus;
+        viewModel = _viewModel;
     }
+
 
     #endregion
 
     #region Signals
 
     private void OnEnable()
-    {       
+    {
         signalBus.Subscribe<MeterSignal>(MeterSignal);
         signalBus.Subscribe<TakeCoinSignal>(TakeCoinSignal);
         signalBus.Subscribe<TakeBonusSignal>(TakeBonusSignal);
     }
 
     private void OnDisable()
-    {       
+    {
         signalBus.Unsubscribe<MeterSignal>(MeterSignal);
         signalBus.Unsubscribe<TakeCoinSignal>(TakeCoinSignal);
         signalBus.Unsubscribe<TakeBonusSignal>(TakeBonusSignal);
     }
-    
+
     private void TakeCoinSignal()
-    {       
-         CountCoin++;
-         CoinScore += scoreCoin;
-        
+    {
+        CountCoin++;
+        CoinScore += scoreCoin;
+
     }
 
     /// <summary>
@@ -79,18 +95,18 @@ public class ScoreManager : MonoBehaviour
         else
         {
             DisctanseScore += scoreMeter;
-        }        
+        }
 
-        if(CountMeter > 0 && CountMeter % accelerationDistance == 0)
+        if (CountMeter > 0 && CountMeter % accelerationDistance == 0)
         {
             signalBus.Fire(new AccelerationSignal());
         }
     }
 
     private void TakeBonusSignal()
-    {        
-            GiftQty += 3;
-       
+    {
+        GiftQty += 3;
+
     }
 
     #endregion

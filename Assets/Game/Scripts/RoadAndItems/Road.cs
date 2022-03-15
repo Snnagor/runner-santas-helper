@@ -18,8 +18,6 @@ public class Road : MoveObjects
     [SerializeField] private Transform track;
     public Transform Track { get => track; set => track = value; }
 
-    [SerializeField] private int countCreateTrack = 10;
-
     private float widthTrack;    
     private int rightPos;
     private int leftPos;
@@ -56,11 +54,6 @@ public class Road : MoveObjects
         }
     }
 
-    private void Awake()
-    {
-        CreateTrack();
-    }
-
     private void Start()
     {
         startXPostionLeftGround = leftGround.position.x;
@@ -93,8 +86,6 @@ public class Road : MoveObjects
         {
             track.gameObject.SetActive(false);
         }
-
-        
     }
 
     /// <summary>
@@ -111,20 +102,7 @@ public class Road : MoveObjects
         PositionTrack();
         PositionGround();
         ChangeWidthActivateTracks();
-    }
-
-    /// <summary>
-    /// Создание дорожек
-    /// </summary>
-    private void CreateTrack()
-    {
-        for (int i = 0; i < countCreateTrack; i++)
-        {
-            Transform newTrack = Instantiate(track, Vector3.zero, Quaternion.identity, transform);
-
-            createdTracks.Add(newTrack);
-        }
-    }
+    }    
 
     /// <summary>
     /// Активация дорожек
@@ -141,8 +119,6 @@ public class Road : MoveObjects
             createdTracks[countTrackFromLeft + i - 2].position = new Vector3(gameManager.WidthTrack * (leftPos + countTrackFromLeft + i), track.position.y, track.position.z);
 
             createdTracks[countTrackFromLeft + i - 2].gameObject.SetActive(true);
-
-            //countTrackFromLeft++;
         }
     }
 
