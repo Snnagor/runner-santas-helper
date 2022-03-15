@@ -56,11 +56,6 @@ public class Road : MoveObjects
         }
     }
 
-    private void Awake()
-    {
-        CreateTrack();
-    }
-
     private void Start()
     {
         startXPostionLeftGround = leftGround.position.x;
@@ -111,19 +106,6 @@ public class Road : MoveObjects
         PositionTrack();
         PositionGround();
         ChangeWidthActivateTracks();
-    }
-
-    /// <summary>
-    /// Создание дорожек
-    /// </summary>
-    private void CreateTrack()
-    {
-        for (int i = 0; i < countCreateTrack; i++)
-        {
-            Transform newTrack = Instantiate(track, Vector3.zero, Quaternion.identity, transform);
-
-            createdTracks.Add(newTrack);
-        }
     }
 
     /// <summary>
