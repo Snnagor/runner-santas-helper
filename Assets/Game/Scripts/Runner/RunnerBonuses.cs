@@ -22,7 +22,6 @@ public class RunnerBonuses : MonoBehaviour
     private DataManager dataManager;
     private ShopSettings shopSettings;
     private DiContainer diContainer;
-    private ChanceGenerator chanceGenerator;
 
     [Inject]
     private void Construct(GameManager _gameManager, 
@@ -31,8 +30,7 @@ public class RunnerBonuses : MonoBehaviour
                            RunnerGifts _runnerGift,
                            DataManager _dataManager,
                            ShopSettings _shopSettings,
-                           DiContainer _diContainer,
-                           ChanceGenerator _chanceGenerator)
+                           DiContainer _diContainer)
     {
         gameManager = _gameManager;
         signalBus = _signalBus;
@@ -41,7 +39,6 @@ public class RunnerBonuses : MonoBehaviour
         dataManager = _dataManager;
         shopSettings = _shopSettings;
         diContainer = _diContainer;
-        chanceGenerator = _chanceGenerator;
     }
 
     #endregion
@@ -84,10 +81,7 @@ public class RunnerBonuses : MonoBehaviour
         if (!gameManager.IsRun) return;
 
         // рандоманый выбор бонуса из массива
-        // actionIndexBonus = Random.Range(0, bonuses.Length);
-
-        actionIndexBonus = chanceGenerator.DropChanceBonuses();
-
+        actionIndexBonus = Random.Range(0, bonuses.Length);
         actionBonus = ibonuses[actionIndexBonus];
 
         BonusFly newBonusFly;
@@ -151,7 +145,5 @@ public class RunnerBonuses : MonoBehaviour
             item.Execute();
         }
     }
-
-
 
 }

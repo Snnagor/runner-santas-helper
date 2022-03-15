@@ -13,7 +13,6 @@ public class Installer : MonoInstaller
     private void BindInput()
     {
         Container.Bind<InputHandler>().AsSingle().NonLazy();
-        
     }
 
     private void BindSignals()
@@ -34,6 +33,5 @@ public class Installer : MonoInstaller
         Container.DeclareSignal<SoundSignal>();
         Container.DeclareSignal<ContinueSignal>();
         Container.DeclareSignal<TopTutorialSignal>();
-        Container.DeclareSignal<TakeDuckSignal>();
     }
 }

@@ -27,7 +27,9 @@ public abstract class MoveObjects : MonoBehaviour, IMove
         activationRoad = _activationRoad;
     }
 
-    #endregion                
+    #endregion            
+
+    
 
     //Движение объекта
     public virtual void Move()
@@ -38,6 +40,12 @@ public abstract class MoveObjects : MonoBehaviour, IMove
              transform.position = Vector3.MoveTowards(transform.position, target, gameManager.CurrentSpeed * Time.deltaTime);
         }
     }
+
+
+    //private  void Update()
+    //{
+    //    Move();
+    //}
 
     public virtual void Execute()
     {

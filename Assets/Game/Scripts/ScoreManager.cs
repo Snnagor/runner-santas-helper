@@ -9,17 +9,6 @@ public class ScoreManager : MonoBehaviour
 
    public int CountCoin { get; set; }
 
-   private int countDuck;
-   public int CountDuck
-    { 
-        get => countDuck;
-        set 
-        {
-            countDuck = value;
-            viewModel.Ducks = countDuck.ToString();
-        } 
-    }
-
    public int CoinScore { get; set; }
 
    public int GiftQty { get; set; }
@@ -36,23 +25,19 @@ public class ScoreManager : MonoBehaviour
     private int scoreCoin;
     private int accelerationDistance;
 
-    #region Injects
-
-    private SignalBus signalBus;
+    private SignalBus signalBus;       
     private Config config;
     private DoubleCoinBonus doubleCoinBonus;
-    private ViewModel viewModel;
+
+    #region Injects
 
     [Inject]
-    private void Construct(Config _config, 
-                           SignalBus _signalBus, 
-                           DoubleCoinBonus _doubleCoinBonus,
-                           ViewModel _viewModel)
+    private void Construct(Config _config, SignalBus _signalBus, DoubleCoinBonus _doubleCoinBonus)
     {
-        signalBus = _signalBus;
+        signalBus = _signalBus;        
+       // settingsFile = _settingsFile;
         config = _config;
         doubleCoinBonus = _doubleCoinBonus;
-        viewModel = _viewModel;
     }
 
     #endregion
@@ -116,5 +101,4 @@ public class ScoreManager : MonoBehaviour
         scoreCoin = config.ScoreBonus;
         accelerationDistance = config.AccelerationDistance;
     }
-
 }

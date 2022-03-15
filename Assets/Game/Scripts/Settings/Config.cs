@@ -77,12 +77,5 @@ public class Config : ScriptableObject
 
     [SerializeField] private bool restart;
     public bool Restart { get => restart; set => restart = value; }
-    
-
-    [Header("Bonus Settings")]
-
-    [SerializeField] private int[] chanceBonus;
-
-    public int[] ChanceBonus { get => chanceBonus; set => chanceBonus = value; }
 
 }
