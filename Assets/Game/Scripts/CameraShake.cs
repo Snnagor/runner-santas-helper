@@ -67,14 +67,6 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    //public void ShakeItHightTop()
-    //{
-    //    virtualCameraNoise.m_NoiseProfile = WeaponState.instance.CurrentWeapon.FireTop;
-    //    virtualCameraNoise.m_AmplitudeGain = WeaponState.instance.CurrentWeapon.ShakeAmplutde;
-    //    virtualCameraNoise.m_FrequencyGain = WeaponState.instance.CurrentWeapon.ShakeFrequency;
-    //    shakeElapsedTime = WeaponState.instance.CurrentWeapon.ShakeDuration;
-    //}
-
     public void Explosion()
     {
         virtualCameraNoise.m_NoiseProfile = _explosionNoise;

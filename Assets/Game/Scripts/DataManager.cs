@@ -12,9 +12,6 @@ public class DataManager : MonoBehaviour
     public const string MUSIC = "music";
     public const string TUTORIAL = "tutorial";
     public const string TUTORIAL2 = "tutorialTop";
-    //public const string TOP1 = "top1";
-    //public const string TOP2 = "top2";
-    //public const string TOP3 = "top3";
 
     public int TotalScore { get; set; }
 
@@ -240,15 +237,7 @@ public class DataManager : MonoBehaviour
 
         return false;
     }
-
-    private void OnApplicationQuit()
-    {
-        //if (gameManager.IsRun)
-        //{
-        //    SaveDataScore();
-        //    SaveDataCoin();
-        //}
-    }
+       
 
     /// <summary>
     /// Сохранить туториал

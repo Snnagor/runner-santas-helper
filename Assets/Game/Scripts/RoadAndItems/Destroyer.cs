@@ -29,46 +29,6 @@ public class Destroyer : MonoBehaviour
         {
             other.gameObject.SetActive(false);            
             other.gameObject.transform.position = Vector3.zero;
-
-            //if (other.CompareTag("Gift"))
-            //{
-                
-            //   var coin = other.GetComponent<Gift>();      
-            //    if (coin is IMove) activatorRoad.MoveObjects.Remove(coin);
-            //}
-
-            //if (other.CompareTag("Empty"))
-            //{
-
-            //    var coin = other.GetComponent<Empty>();
-            //    if (coin is IMove) activatorRoad.MoveObjects.Remove(coin);
-            //}
-
-            //if (other.CompareTag("Flag"))
-            //{
-
-            //    var coin = other.GetComponent<Empty>();
-            //    if (coin is IMove) activatorRoad.MoveObjects.Remove(coin);
-            //}
-
-            //if (other.CompareTag("Block"))
-            //{
-
-            //    var coin = other.GetComponent<Block>();
-            //    if (coin is IMove) activatorRoad.MoveObjects.Remove(coin);
-            //}
-
-            //if (other.CompareTag("Coin"))
-            //{
-
-            //    var coin = other.GetComponent<Coin>();
-            //    if (coin is IMove) activatorRoad.MoveObjects.Remove(coin);
-            //}
-
         }
-
-        
     }
-
-    
 }

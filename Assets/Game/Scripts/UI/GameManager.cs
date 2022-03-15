@@ -24,7 +24,6 @@ public class GameManager: MonoBehaviour
 
     private SignalBus signalBus;
     private Config config;
-    //private SettingsFile settingsFile;
 
     private bool speedContinue;
 
@@ -43,7 +42,6 @@ public class GameManager: MonoBehaviour
                            DataManager _dataManager)
     {        
         signalBus = _signalBus;      
-       // settingsFile = _settingsFile; 
         config = _config;
         runnerAnimation = _runnerAnimation;
         runnerMove = _runnerMove;

@@ -265,7 +265,6 @@ public class RunnerGifts : MonoBehaviour
             gifts[i].gameObject.SetActive(false);
             gifts[i].transform.rotation = Quaternion.Euler(Vector3.zero);
             arrayColor[i] = 0;
-           // CountActiveGift--;
         }
 
         CountActiveGift = 0;

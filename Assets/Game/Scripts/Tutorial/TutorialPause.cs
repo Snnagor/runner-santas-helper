@@ -63,17 +63,7 @@ public class TutorialPause : MonoBehaviour
         if (gameManager.HaveTutorial)
         {
             if (other.CompareTag("Player"))
-            {                
-                //if (topBlockTutorial && dataManager.LoadDataTutorial2())
-                //{
-                //    RunnerGifts runnerGifts = other.GetComponent<RunnerGifts>();
-                //    if (runnerGifts?.CountActiveGift < 6) return;
-                //    gameManager.DisableTutorial();
-                //    dataManager.SaveDataTutorial2();
-                //    pausePanel.SetActive(true);
-                //    Time.timeScale = 0;
-                //}               
-
+            {               
                 if (dataManager.LoadDataTutorial() && !topBlockTutorial)
                 {
                     pausePanel.SetActive(true);

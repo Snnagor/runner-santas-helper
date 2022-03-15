@@ -15,9 +15,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip hitBlockGifts;
     [SerializeField] private AudioClip hitSnowman;
     [SerializeField] private AudioClip upgradeBonus;
-    //[Space]
-    //[Header("AudioSource")]
-    // [SerializeField] private AudioSource backgroundMusic;
     [Header("Volume")]
     [Range(0, 1)]
     [SerializeField] private float volumeBackgrooundMusic;
@@ -209,12 +206,6 @@ public class SoundManager : MonoBehaviour
     public void UpgradeBonus()
     {
         PlaySoundShot(upgradeBonus, volume);
-    }
-
-
-    private void Update()
-    {
-        
     }
 
 }

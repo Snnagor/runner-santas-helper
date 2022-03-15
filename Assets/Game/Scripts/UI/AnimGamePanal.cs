@@ -7,7 +7,6 @@ public class AnimGamePanal : MonoBehaviour
 {
     [SerializeField] private Transform scoreIcon;
 
-
     public void AnimScoreIcon()
     {       
         Sequence seq = DOTween.Sequence();        

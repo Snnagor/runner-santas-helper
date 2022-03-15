@@ -7,7 +7,6 @@ public class CamerasManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera virtualCameraRun;
 
     private CinemachineComposer composer;
-   // private SettingsFile settingsFile;
     private Config config;
 
     float maxSpeedCam = 5f;
@@ -16,8 +15,7 @@ public class CamerasManager : MonoBehaviour
 
     [Inject]
     private void Construct(Config _config)
-    {      
-       // settingsFile = _settingsFile;
+    {             
         config = _config;
     }
 

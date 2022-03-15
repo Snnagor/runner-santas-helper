@@ -55,7 +55,6 @@ public class UIcontroller : MonoBehaviour
     private GameManager gameManager;
     private Config config;
     private SoundManager soundManager;
-    // private SettingsFile settingsFile;
 
     [Inject]
     private void Construct(Config _config,
@@ -125,6 +124,7 @@ public class UIcontroller : MonoBehaviour
         else
         {
             StartBtn();
+
             config.Restart = false;
         }
 
@@ -137,7 +137,6 @@ public class UIcontroller : MonoBehaviour
         UpdateCoinInfo();
         UpdateGiftInfo();
         UpdateScoreInfo();
-
     }
 
     /// <summary>
@@ -151,8 +150,6 @@ public class UIcontroller : MonoBehaviour
             if (state != pausePanel)
                 currentPanel.SetActive(false);
         }
-
-
         currentPanel = state;
 
         if (currentPanel != null)

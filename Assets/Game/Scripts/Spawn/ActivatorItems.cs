@@ -18,7 +18,6 @@ public class ActivatorItems : MonoBehaviour
     private GameManager gameManager;
     private Spawner spawner;
     private Config config;
-    // private SettingsFile settingsFile;
     private SignalBus signalBus;
     private LocationsSettings locationSettings;
     private ActivatorRoad activationRoad;
@@ -38,7 +37,6 @@ public class ActivatorItems : MonoBehaviour
         gameManager = _gameManager;
         spawner = _spawner;
         config = _config;
-        //  settingsFile = _settingsFile;
         signalBus = _signalBus;
         locationSettings = _locationSettings;
         activationRoad = _activationRoad;
