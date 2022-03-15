@@ -60,7 +60,7 @@ public class DuckBonusFly : MonoBehaviour
     private void Deactivate()
     {
        // AnimIconScore();
-        scoreManager.CountDuck ++;
+       // scoreManager.CountDuck ++;
         Destroy(gameObject);
     }
 }

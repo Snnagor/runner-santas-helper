@@ -21,7 +21,7 @@ public class ChanceGenerator : MonoBehaviour
 
     public void Start()
     {
-        FillChanceBonuses();
+       // FillChanceBonuses();
     }
      
 
@@ -29,28 +29,28 @@ public class ChanceGenerator : MonoBehaviour
     /// Заполнение массива вероятностей появление бонусов
     /// </summary>
     /// <returns></returns>
-    public void FillChanceBonuses()
-    {        
-        int indexTmpArray = 0;
+    //public void FillChanceBonuses()
+    //{        
+    //    int indexTmpArray = 0;
 
-       // print(config.ChanceBonus.Length + " config.ChanceBonus.Length");
+    //   // print(config.ChanceBonus.Length + " config.ChanceBonus.Length");
                
 
-        for (int j = 0; j < config.ChanceBonus.Length; j++)
-        {
-            for (int i = 0; i < config.ChanceBonus[j]; i++)
-            {
-                bonusDropChance[indexTmpArray] = j;
+    //    for (int j = 0; j < config.ChanceBonus.Length; j++)
+    //    {
+    //        for (int i = 0; i < config.ChanceBonus[j]; i++)
+    //        {
+    //            bonusDropChance[indexTmpArray] = j;
 
-                indexTmpArray++;                 
+    //            indexTmpArray++;                 
 
-                if (indexTmpArray > bonusDropChance.Length)
-                    break;
+    //            if (indexTmpArray > bonusDropChance.Length)
+    //                break;
                
-            }
-        }
+    //        }
+    //    }
 
-    }    
+    //}    
 
     public int DropChanceBonuses()
     {
