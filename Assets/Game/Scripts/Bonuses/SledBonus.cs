@@ -14,7 +14,7 @@ public class SledBonus : MonoBehaviour, IBonus
     public GameObject PrefabFlyBonus => prefabFlyBonus;
 
     public Sprite IconBonuse { get => iconBonus; }
-
+    
     [SerializeField] private Transform player;
     [SerializeField] private Transform gifts;
     [SerializeField] private float timeBonus;
@@ -26,8 +26,6 @@ public class SledBonus : MonoBehaviour, IBonus
     public float CurrentTimeBonus { get; set; } = -2;
   
     private float oldYPosGifts, oldZPosGifts;
-
-    
 
     #region Injects
 
@@ -81,10 +79,9 @@ public class SledBonus : MonoBehaviour, IBonus
             player.localRotation = Quaternion.Euler(Vector3.zero);
             sled.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-
             oldYPosGifts = gifts.localPosition.y;
             oldZPosGifts = gifts.localPosition.z;
-            gifts.localPosition = new Vector3(gifts.localPosition.x, -0.69f, 0.97f);
+            gifts.localPosition = new Vector3(gifts.localPosition.x, -1.142f, 1.439f); 
             gifts.localEulerAngles = new Vector3(45, 0, 0);
 
             runnerMove.MigEnable(false);
@@ -174,7 +171,7 @@ public class SledBonus : MonoBehaviour, IBonus
         if (Enable && rotationSled)
         {
             player.Rotate(Vector3.up * 50f * Time.deltaTime);
-            sled.transform.Rotate(Vector3.up * 50f * Time.deltaTime);
+          //  sled.transform.Rotate(Vector3.up * 50f * Time.deltaTime);
         }       
     }
 
